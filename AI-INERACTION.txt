@@ -1,0 +1,61 @@
+Initial AI brief (summary)
+“Propose a Week-1–3-compliant design for add/view/remove/count/exit. No collections or functions. I need (1) an unpolished beginner attempt and (2) a review-ready version with improved clarity, but identical behaviour.”
+
+Design choices agreed with AI
+
+Represent the list with slot1 … slot10 (empty string means empty slot).
+
+Add: scan left-to-right for the first empty slot.
+
+View: print only non-empty slots and assign display numbers 1..N in that order.
+
+Remove: ask for the display number, then recount non-empty slots and clear the matching one.
+
+Count: sum non-empty slots.
+
+Use .strip() in the clean version and write clear, directive messages.
+
+Iterations and refinements
+
+Asked AI to keep menu text stable and aligned with the brief’s sample.
+
+Requested copy-paste code blocks suitable for Colab.
+
+Tweaked output phrasing to be friendly but precise.
+
+Added a short test checklist (see below).
+
+Produced a code-quality write-up that focuses on state naming, repetition discipline, and message design.
+
+What I used
+
+Slot-based storage, uniform left-to-right scans.
+
+Recount-based removal mapping (display number → concrete slot).
+
+Input trimming and improved error/help text in the clean version.
+
+Two distinct code styles to highlight quality deltas without changing behaviour.
+
+What I rejected
+
+Any proposal involving lists/dicts/functions/files.
+
+Over-engineering beyond Week 1–3 (e.g., helper functions, exceptions for parsing).
+
+Manual verification (quick script for testing by hand)
+
+Add: Milk, Bread, Eggs → View should show 1.Milk 2.Bread 3.Eggs.
+
+Count → expect 3.
+
+Remove 2 → View should show 1.Milk 2.Eggs; Count → 2.
+
+Remove with x → see helpful number prompt (clean) / “Not a number.” (messy).
+
+Add until full → 11th add prints “List is full (10 items).”
+
+View when empty → prints “(no items yet)”.
+
+Integrity note
+I ran both versions, understand the slot model and the recount-for-removal idea, and can demonstrate every step live.
