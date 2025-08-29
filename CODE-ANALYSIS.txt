@@ -1,0 +1,31 @@
+Context
+The goal was to build the same shopping-list program twice—first as a quick-and-dirty attempt, then as a review-ready version—using only Week 1–3 tools: variables, input(), print(), if/elif/else, and a while loop. Collections, functions, and file I/O were not allowed, so the “list” is represented by ten separate string variables.
+
+How the clean version improves on the messy one
+
+1.Intent-revealing state
+The messy code uses go and ch, which hide meaning. The clean version switches to running and choice, which tell you exactly what they represent. Clear state names make the loop and branches easier to reason about.
+
+2.Predictable layout
+In the messy version, repeated blocks are formatted inconsistently, so scanning for mistakes is slow. The clean version standardises spacing and ordering (slot1 → slot10) everywhere. That visual consistency makes any typo or omission pop out immediately.
+
+3.Input hygiene
+Both programs accept menu choices and item names, but the clean version trims whitespace with .strip() and uses friendlier prompts (“Please type a number like 1, 2, or 3.”). Small UX touches reduce tester errors and re-runs.
+
+4.Clear separation of concerns (within limits)
+We don’t have functions, but the clean version still separates ideas: menu display, read choice, perform action, print feedback. This rhythm reads like pseudo-code and is easier to narrate during a demo.
+
+5.Stable numbering model
+Removal works by counting through non-empty slots until the requested number is reached. The clean version documents this explicitly and uses a consistent number/count pattern so “what the user sees” maps reliably to “what gets removed”.
+
+6.Message design
+The messy code prints terse or ambiguous lines. The clean version uses precise microcopy (“List is full (10 items). Remove something first.”, “(no items yet)”), which makes behaviour self-explanatory.
+
+7.Safer defaults
+The clean version handles unknown menu entries with a polite nudge (“Please choose a number 1–5.”) and avoids accidental empty adds by nudging the user back to the menu flow.
+
+Which version is better and why
+They compute the same results, but the clean version is faster to verify and easier to change later thanks to intent-revealing names, consistent repetition, structured control flow, and clearer I/O messages.
+
+What I learned
+Readability is part of correctness. By naming state clearly, keeping repetition uniform, writing the same pattern the same way every time, and explaining the remove-by-number idea in comments, I reduced surprises and made the code teachable. Even with strict constraints, disciplined style produces code I can defend line-by-line.
